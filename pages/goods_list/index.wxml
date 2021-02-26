@@ -1,0 +1,24 @@
+<view class="good-list">
+    <!-- 搜索框 -->
+    <SearchInput></SearchInput>
+
+    <!-- tabs -->
+    <Tabs tabs="{{tabs}}" bindchangeTabsItem="handleChangeTabsItem">
+        <view class="content">
+            <navigator open-type="navigate" class="contet-item"
+            wx:for="{{goodList}}"
+            wx:key="goods_id"
+            url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
+                <view class="content-item-img">
+                    <image wx:if="{{item.goods_small_logo !== ''}}" mode="widthFix" src="{{item.goods_small_logo}}"/>
+                    <image wx:else mode="widthFix" src="http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000606020881_1_400x400.jpg"/>
+                </view>
+                <view class="content-item-info">
+                    <view class="content-item-info-name">{{item.goods_name}}</view>
+                    <view class="content-item-info-price">￥{{item.goods_price}}</view>
+                </view>
+            </navigator>
+            <view wx:if="{{isNoData}}" class="no-data">没有更多啦~</view>
+        </view>
+    </Tabs>
+</view>

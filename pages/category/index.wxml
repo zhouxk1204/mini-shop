@@ -1,0 +1,51 @@
+<view class="categroy">
+    <!-- 搜素控件 开始-->
+    <SearchInput></SearchInput>
+    <!-- 搜素控件 结束-->
+
+    <view class="categroy-container">
+        <!-- 左侧菜单 -->
+        <scroll-view class="menu" scroll-y>
+            <view
+            wx:for="{{menuList}}"
+            wx:key="*this"
+            class="menu-item {{index === currentIndex ? 'menu-item-active' : ''}}"
+            bindtap="hanleMenuItemTap"
+            data-current-index="{{index}}">
+                {{item}}
+            </view>
+        </scroll-view>
+
+        <!--　右侧商品 -->
+        <scroll-view class="content" scroll-y scroll-top="{{scrollTop}}">
+            <view class="goods-group" 
+            wx:for="{{goodsInfo}}"
+            wx:for-item="item1"
+            wx:for-index="index1"
+            wx:key="cat_id">
+                <!-- 标题 -->
+                <view class="goods-title">
+                    <view class="separator">/</view>
+                    <view>
+                    {{item1.cat_name}}
+                    </view>
+                    <view class="separator">/</view>
+                </view>
+
+                <!-- 内容 -->
+                <view class="goods-content">
+                    <navigator wx:for="{{item1.children}}"
+                    wx:for-item="item2"
+                    wx:for-index="index2"
+                    wx:key="cat_id"
+                    url="/pages/goods_list/index?cat_id={{item2.cat_id}}">
+                        <image mode="widthFix" src="{{item2.cat_icon}}"></image>
+                        <view class="goods-name">{{item2.cat_name}}</view>
+                    </navigator>
+                </view>
+            </view>
+
+        </scroll-view>
+    </view>
+</view>
+  

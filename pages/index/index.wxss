@@ -1,0 +1,44 @@
+.shop-index-swiper swiper {
+  width: 750prx;
+  height: 340rpx;
+}
+.shop-index-swiper swiper image {
+  width: 750rpx;
+}
+.shop-index-navi {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.shop-index-navi navigator {
+  padding: 20rpx;
+  flex: 1;
+}
+.shop-index-navi navigator image {
+  width: 100%;
+}
+.shop-index-floor .floor-group .floor-title {
+  padding-bottom: 10rpx;
+}
+.shop-index-floor .floor-group .floor-title image {
+  width: 100%;
+}
+.shop-index-floor .floor-group .floor-content {
+  overflow: hidden;
+}
+.shop-index-floor .floor-group .floor-content navigator {
+  width: 33.33vw;
+  float: left;
+}
+.shop-index-floor .floor-group .floor-content navigator:nth-last-child(-n+4) {
+  height: 208.3rpx;
+  border-left: 10rpx solid #fff;
+}
+.shop-index-floor .floor-group .floor-content navigator:nth-child(2),
+.shop-index-floor .floor-group .floor-content navigator:nth-child(3) {
+  border-bottom: 10rpx solid #fff;
+}
+.shop-index-floor .floor-group .floor-content navigator image {
+  width: 100%;
+  height: 100%;
+}
