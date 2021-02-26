@@ -1,0 +1,55 @@
+@import "../../styles/base.less";
+
+.goods-detail{
+    swiper{
+        height: 65vw;
+        swiper-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            image{
+                width: 60%;
+            }
+        }
+    }
+}
+
+.goods-disp{
+    border-bottom: 1px solid #ccc;
+    .goods-price{
+        color: var(--themeColor);
+        font-weight: bold;
+        font-size: 32rpx;
+        padding-left: 10rpx;
+    }
+    .goods-info{
+        padding: 10rpx;
+        display: flex;
+        .goods-name{
+            flex: 6;
+            font-size: 30rpx;
+            .multilineEllipsis(2);
+        }
+        .goods-collect{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-left: 1px solid #ccc;
+            .iconfont{
+                font-size: 36rpx;
+            }   
+        }
+    }
+}
+
+.goods-pic-detail{
+    padding: 10rpx 5rpx 20rpx 5rpx;
+    .title{
+        color: var(--themeColor);
+        font-weight: bold;
+        font-size: 32rpx;
+        padding-left: 10rpx;
+    }
+}

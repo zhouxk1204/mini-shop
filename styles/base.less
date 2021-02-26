@@ -1,0 +1,9 @@
+// 多行文本的溢出显示省略号
+.multilineEllipsis(@line) { 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  line-clamp: @line;
+  -webkit-box-orient: vertical;
+}

@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        goodsObj: {}
     },
 
     /**
@@ -19,10 +19,12 @@ Page({
     getGoodsDetailData(goods_id) {
         request({ url: '/goods/detail', data: { goods_id } })
             .then(res => {
-                console.log('res: ', res);
+                const goodsObj = res.data.message;
+                console.log('goodsObj: ', goodsObj);
+                this.setData({goodsObj})
             })
             .catch(err => {
-
+                
             });
     },
     /**
