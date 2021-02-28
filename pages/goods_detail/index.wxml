@@ -2,7 +2,9 @@
     <swiper autoplay circular indicator-dots>
         <swiper-item 
             wx:for="{{goodsObj.pics}}"
-            wx::key="pics_id"
+            wx:key="pics_id"
+            bindtap="handlePicPreviewTap"
+            data-url="{{item.pics_mid}}"
         >
             <image src="{{item.pics_mid}}" mode="widthFix"/>
         </swiper-item>
