@@ -46,6 +46,29 @@ Page({
             urls // 需要预览的图片http链接列表
           })
     },
+    // 添加购物车
+    handleCartAdd(){
+        console.log("add");
+        // 获取本地缓存的购物车数据
+        const cart = wx.getStorageSync("cart") || [];
+        const index = cart.findIndex(e=>e.goods_id === this.GoodsInfo.goods_id);
+        if(index === -1){
+            this.GoodsInfo.num = 1;
+            cart.push(this.GoodsInfo);
+        }else{
+            cart[index].num++;
+        }
+        // 缓存新的购物车数据
+        wx.setStorageSync("cart", cart);
+
+        // 添加成功提示
+        wx.showToast({
+            title: '添加成功',
+            icon: 'success',
+            // 防止短时间内重复点击
+            mask: true
+        });
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
