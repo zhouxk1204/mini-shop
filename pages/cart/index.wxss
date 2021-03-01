@@ -1,1 +1,6 @@
-/* pages/cart/index.wxss */
+.cart .cart-add-address {
+  padding: 20rpx;
+}
+.cart .cart-add-address button {
+  width: 60%;
+}
