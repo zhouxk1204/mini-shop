@@ -1,5 +1,64 @@
 <view class="cart">
-    <view class="cart-add-address">
+    <view class="address-info" wx:if="{{address.userName}}">
+        <view class="address-user-info" >
+            <view class="user-name">收件人：{{address.userName}}</view>
+            <view class="user-phone">联系电话：{{address.telNumber}}</view>
+        </view>
+        <view class="address-detail">
+            收货地址：{{address.all}}
+        </view>
+    </view>
+
+    <view class="cart-add-address" wx:else>
         <button type="primary" plain bindtap="handleGetAddress">获取收货地址</button>
+    </view>
+
+    <view class="cart-area">
+        <view class="cart-title">购物车</view>
+        <view class="cart-content">
+            <view class="cart-item" 
+            wx:for="{{cart}}"
+            wx:key="goods_id">
+                <view class="cart-select">
+                    <checkbox-group bindchange="">
+                        <checkbox checked="{{item.checked}}"></checkbox>
+                    </checkbox-group>
+                </view>
+                <navigator>
+                    <image src="{{item.goods_small_logo}}" mode="widthFix" lazy-load="false"/>     
+                </navigator>
+                <view class="cart-info">
+                    <view class="goods-name">{{item.goods_name}}</view>
+                    <view class="goods-price-area">
+                        <view class="goods-price">￥{{item.goods_price}}</view>
+                        <view class="goods-change-count-area">
+                            <view>-</view>
+                            <text class="goods-count">{{item.num}}</text>
+                            <view>+</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="cart-footer"> 
+        <view class="select-all">
+            <checkbox-group bindchange="">
+                <checkbox>
+                    全选
+                </checkbox>
+            </checkbox-group>
+        </view>
+
+        <view class="total-price-area">
+            <view class="total-price">
+                合计：<text>￥99999</text>
+            </view>
+            <view>包含运费</view>
+        </view>
+        <view class="pay">  
+            结算(2)
+        </view>
     </view>
 </view>

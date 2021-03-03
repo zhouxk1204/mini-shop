@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        address: {}, // 收货地址
+        cart: [] // 购物车数据
     },
     handleGetAddress() {
         // wx.getSetting({
@@ -40,64 +41,26 @@ Page({
         // https://developers.weixin.qq.com/miniprogram/dev/api/open-api/setting/AuthSetting.html  (boolean scope.address) 是否授权通讯地址，已取消此项授权，会默认返回true
         wx.chooseAddress({
             success: function(res) {
+                const addressDetail = `${res.provinceName}${res.cityName}${res.countyName}${res.detailInfo}`
+                res.all = addressDetail;
+                const address = Object.assign({}, res, { all: addressDetail });
+                console.log('address: ', address);
                 // 将地址存入本地存储
-                wx.setStorageSync("address", res);
+                wx.setStorageSync("address", address);
             }
         })
     },
     /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        // 从本地存储中取出收货地址
+        console.log(111);
+        const address = wx.getStorageSync("address");
+        console.log('address: ', address);
+        // 获取本地存储中的购物车商品信息
+        const cart = wx.getStorageSync("cart");
 
+        this.setData({ address, cart });
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
-    }
 })
