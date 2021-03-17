@@ -60,7 +60,6 @@ Page({
         console.log('address: ', address);
         // 获取本地存储中的购物车商品信息
         const cart = wx.getStorageSync("cart");
-
         this.setData({ address, cart });
     },
 })
